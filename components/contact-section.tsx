@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, Send, Phone, Mail, Clock, MapPin } from "lucide-react";
+import { CheckCircle2, Send, Phone, Mail, Clock } from "lucide-react";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
     email: "",
     subject: "",
     message: "",
@@ -14,6 +13,7 @@ export default function ContactSection() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -25,24 +25,52 @@ export default function ContactSection() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.firstName || !formData.email) {
-      alert("Please provide at least your first name and email address.");
-      return;
-    }
     setIsSubmitting(true);
-    setTimeout(() => {
+    setErrorMessage("");
+
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/ajax/tpslegacy@yahoo.com",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+            subject: formData.subject,
+            _captcha: "false",
+          }),
+        }
+      );
+
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        const data = await response.json().catch(() => null);
+        setErrorMessage(
+          data?.message ||
+            "There was an issue sending your inquiry. Please try again."
+        );
+      }
+    } catch {
+      setErrorMessage(
+        "Network error. Please check your connection and try again."
+      );
+    } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
-    }, 700);
+    }
   };
 
   const contactItems = [
@@ -114,34 +142,22 @@ export default function ContactSection() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-[#C9A84C] text-xs tracking-widest block mb-2 font-medium">
-                      FIRST NAME *
-                    </label>
-                    <input
-                      type="text"
-                      name="firstName"
-                      required
-                      value={formData.firstName}
-                      onChange={handleChange}
-                      placeholder="Arjun"
-                      className="w-full bg-neutral-900 border border-neutral-700 text-white placeholder-gray-500 py-3 px-4 focus:outline-none focus:border-[#C9A84C] transition text-sm rounded-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-[#C9A84C] text-xs tracking-widest block mb-2 font-medium">
-                      LAST NAME
-                    </label>
-                    <input
-                      type="text"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleChange}
-                      placeholder="Mehta"
-                      className="w-full bg-neutral-900 border border-neutral-700 text-white placeholder-gray-500 py-3 px-4 focus:outline-none focus:border-[#C9A84C] transition text-sm rounded-none"
-                    />
-                  </div>
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="text" name="_honey" style={{ display: "none" }} />
+
+                <div>
+                  <label className="text-[#C9A84C] text-xs tracking-widest block mb-2 font-medium">
+                    NAME *
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Arjun Mehta"
+                    className="w-full bg-neutral-900 border border-neutral-700 text-white placeholder-gray-500 py-3 px-4 focus:outline-none focus:border-[#C9A84C] transition text-sm rounded-none"
+                  />
                 </div>
 
                 <div>
@@ -179,6 +195,7 @@ export default function ContactSection() {
                   </label>
                   <textarea
                     name="message"
+                    required
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Tell us about your spaces, preferred timbers, or timeline..."
@@ -187,10 +204,16 @@ export default function ContactSection() {
                   />
                 </div>
 
+                {errorMessage && (
+                  <p className="text-rose-400 text-xs tracking-wide">
+                    {errorMessage}
+                  </p>
+                )}
+
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto bg-[#C9A84C] hover:bg-[#B89A40] text-neutral-950 font-semibold tracking-widest py-4 px-10 text-xs uppercase transition duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-lg disabled:opacity-70"
+                  className="w-full sm:w-auto bg-[#C9A84C] hover:bg-[#B89A40] text-neutral-950 font-semibold tracking-widest py-4 px-10 text-xs uppercase transition duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     "SENDING INQUIRY..."
