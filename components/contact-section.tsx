@@ -97,10 +97,10 @@ export default function ContactSection() {
   ];
 
   const socialIcons = [
-    { label: "IG", name: "Instagram", href: "https://instagram.com" },
+    { label: "IG", name: "Instagram", href: "https://instagram.com/tapasa_2026" },
     { label: "LI", name: "LinkedIn", href: "https://linkedin.com" },
     { label: "PI", name: "Pinterest", href: "https://pinterest.com" },
-    { label: "WA", name: "WhatsApp", href: "https://wa.me/919820000000" },
+    { label: "WA", name: "WhatsApp", href: "https://wa.me/918976301959" },
   ];
 
   return (
