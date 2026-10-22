@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Check, ShieldCheck, Truck, Sparkles, Heart } from "lucide-react";
+import { ArrowLeft, Check, ShieldCheck, Truck, Sparkles, Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import products from "@/data/products.json";
 
 interface Product {
@@ -13,13 +13,46 @@ interface Product {
   price: string;
   type: string;
   image: string;
+  images?: string[];
 }
 
-export default function ProductDetailView({ product }: { product: Product }) {
+const VEDA_IMAGES = [
+  "/images/veda-1-1.jpg",
+  "/images/veda-1-2.jpg",
+  "/images/veda-1-3.jpg",
+  "/images/veda-1-4.jpg",
+];
+
+export default function ProductDetailView({ product = products[0] }: { product?: Product }) {
   const [quantity, setQuantity] = useState(1);
   const [selectedFinish, setSelectedFinish] = useState("Artisanal Walnut");
   const [inquirySent, setInquirySent] = useState(false);
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const galleryImages =
+    product?.images && product.images.length > 0
+      ? product.images
+      : product?.id === 1
+      ? VEDA_IMAGES
+      : [product?.image || "/p1.png"];
+
+  const activeImage = galleryImages[currentImageIndex] || product?.image || "/p1.png";
+  const imageSrc = activeImage.startsWith("/")
+    ? activeImage
+    : `/${activeImage}`;
+
+  const handlePrevImage = () => {
+    setCurrentImageIndex((prev) =>
+      prev === 0 ? galleryImages.length - 1 : prev - 1
+    );
+  };
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prev) =>
+      prev === galleryImages.length - 1 ? 0 : prev + 1
+    );
+  };
 
   const relatedProducts = products
     .filter((p) => p.id !== product.id && p.type === product.type)
@@ -29,10 +62,6 @@ export default function ProductDetailView({ product }: { product: Product }) {
     relatedProducts.length > 0
       ? relatedProducts
       : products.filter((p) => p.id !== product.id).slice(0, 3);
-
-  const imageSrc = product.image.startsWith("/")
-    ? product.image
-    : `/${product.image}`;
 
   return (
     <div className="min-h-screen bg-[#111111] text-white">
@@ -57,19 +86,66 @@ export default function ProductDetailView({ product }: { product: Product }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Image Showcase */}
           <div className="space-y-4">
-            <div className="relative aspect-4/3 w-full bg-neutral-900 rounded-sm overflow-hidden border border-neutral-800 shadow-2xl">
+            <div className="relative aspect-4/3 w-full bg-neutral-900 rounded-sm overflow-hidden border border-neutral-800 shadow-2xl group">
               <Image
+                key={imageSrc}
                 src={imageSrc}
-                alt={product.name}
+                alt={`${product.name} - View ${currentImageIndex + 1}`}
                 fill
                 priority
-                className="object-cover"
+                className="object-cover transition-all duration-500"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
+
+              {galleryImages.length > 1 && (
+                <>
+                  {/* Left / Right Arrow Buttons */}
+                  <button
+                    type="button"
+                    onClick={handlePrevImage}
+                    aria-label="Previous image"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 z-10 p-2.5 rounded-full bg-black/60 hover:bg-black/90 backdrop-blur-md border border-neutral-700 text-white hover:text-[#c9a84c] transition-all cursor-pointer shadow-lg opacity-80 group-hover:opacity-100"
+                  >
+                    <ChevronLeft size={20} />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleNextImage}
+                    aria-label="Next image"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 z-10 p-2.5 rounded-full bg-black/60 hover:bg-black/90 backdrop-blur-md border border-neutral-700 text-white hover:text-[#c9a84c] transition-all cursor-pointer shadow-lg opacity-80 group-hover:opacity-100"
+                  >
+                    <ChevronRight size={20} />
+                  </button>
+
+                  {/* Slide Counter Badge */}
+                  <div className="absolute top-4 left-4 z-10 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-neutral-700 text-[11px] uppercase tracking-wider text-gray-300">
+                    {currentImageIndex + 1} / {galleryImages.length}
+                  </div>
+
+                  {/* Dot Indicators */}
+                  <div className="absolute bottom-4 left-0 right-0 z-10 flex justify-center gap-2">
+                    {galleryImages.map((_, idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => setCurrentImageIndex(idx)}
+                        aria-label={`Select image ${idx + 1}`}
+                        className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                          currentImageIndex === idx
+                            ? "w-6 bg-[#c9a84c]"
+                            : "w-1.5 bg-white/50 hover:bg-white"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+
               <button
                 onClick={() => setIsWishlisted(!isWishlisted)}
                 aria-label="Save to Wishlist"
-                className="absolute top-4 right-4 p-3 rounded-full bg-black/60 backdrop-blur-md border border-neutral-700 text-white hover:text-[#c9a84c] transition cursor-pointer"
+                className="absolute top-4 right-4 p-3 rounded-full bg-black/60 backdrop-blur-md border border-neutral-700 text-white hover:text-[#c9a84c] transition cursor-pointer z-10"
               >
                 <Heart
                   size={20}
@@ -79,6 +155,36 @@ export default function ProductDetailView({ product }: { product: Product }) {
                 />
               </button>
             </div>
+
+            {/* Thumbnail Row */}
+            {galleryImages.length > 1 && (
+              <div className="grid grid-cols-4 gap-3 pt-2">
+                {galleryImages.map((img, idx) => {
+                  const thumbSrc = img.startsWith("/") ? img : `/${img}`;
+                  return (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setCurrentImageIndex(idx)}
+                      className={`relative aspect-4/3 rounded-sm overflow-hidden border transition-all cursor-pointer ${
+                        currentImageIndex === idx
+                          ? "border-[#c9a84c] ring-1 ring-[#c9a84c]"
+                          : "border-neutral-800 opacity-60 hover:opacity-100"
+                      }`}
+                    >
+                      <Image
+                        src={thumbSrc}
+                        alt={`${product.name} thumbnail ${idx + 1}`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 25vw, 12vw"
+                      />
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+
             <p className="text-xs text-gray-500 text-center tracking-wider uppercase font-light">
               Hand-finished solid wood · Made to order in India
             </p>
