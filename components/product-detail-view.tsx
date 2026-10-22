@@ -33,10 +33,7 @@ export default function ProductDetailView({ product = products[0] }: { product?:
   const galleryImages =
     product?.images && product.images.length > 0
       ? product.images
-      : product?.id === 1
-        ? VEDA_IMAGES
-        : [product?.image || "/p1.png"];
-
+      : VEDA_IMAGES;
   const activeImage = galleryImages[currentImageIndex] || product?.image || "/p1.png";
   const imageSrc = activeImage.startsWith("/")
     ? activeImage
