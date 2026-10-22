@@ -76,17 +76,17 @@ export default function ContactSection() {
   const contactItems = [
     {
       label: "GENERAL INQUIRIES",
-      value: "hello@tapasa.in",
+      value: "tpslegacy@yahoo.com",
       icon: Mail,
     },
     {
       label: "DESIGN CONSULTATION",
-      value: "studio@tapasa.in",
+      value: "ladtanish2005@gmail.com",
       icon: Mail,
     },
     {
       label: "DIRECT PHONE",
-      value: "+91 98200 00000",
+      value: "+91 8976301959 / +91 9920748812",
       icon: Phone,
     },
     {
