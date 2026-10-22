@@ -34,8 +34,8 @@ export default function ProductDetailView({ product = products[0] }: { product?:
     product?.images && product.images.length > 0
       ? product.images
       : product?.id === 1
-      ? VEDA_IMAGES
-      : [product?.image || "/p1.png"];
+        ? VEDA_IMAGES
+        : [product?.image || "/p1.png"];
 
   const activeImage = galleryImages[currentImageIndex] || product?.image || "/p1.png";
   const imageSrc = activeImage.startsWith("/")
@@ -131,11 +131,10 @@ export default function ProductDetailView({ product = products[0] }: { product?:
                         type="button"
                         onClick={() => setCurrentImageIndex(idx)}
                         aria-label={`Select image ${idx + 1}`}
-                        className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                          currentImageIndex === idx
-                            ? "w-6 bg-[#c9a84c]"
-                            : "w-1.5 bg-white/50 hover:bg-white"
-                        }`}
+                        className={`h-1.5 rounded-full transition-all cursor-pointer ${currentImageIndex === idx
+                          ? "w-6 bg-[#c9a84c]"
+                          : "w-1.5 bg-white/50 hover:bg-white"
+                          }`}
                       />
                     ))}
                   </div>
@@ -166,11 +165,10 @@ export default function ProductDetailView({ product = products[0] }: { product?:
                       key={idx}
                       type="button"
                       onClick={() => setCurrentImageIndex(idx)}
-                      className={`relative aspect-4/3 rounded-sm overflow-hidden border transition-all cursor-pointer ${
-                        currentImageIndex === idx
-                          ? "border-[#c9a84c] ring-1 ring-[#c9a84c]"
-                          : "border-neutral-800 opacity-60 hover:opacity-100"
-                      }`}
+                      className={`relative aspect-4/3 rounded-sm overflow-hidden border transition-all cursor-pointer ${currentImageIndex === idx
+                        ? "border-[#c9a84c] ring-1 ring-[#c9a84c]"
+                        : "border-neutral-800 opacity-60 hover:opacity-100"
+                        }`}
                     >
                       <Image
                         src={thumbSrc}
@@ -233,11 +231,10 @@ export default function ProductDetailView({ product = products[0] }: { product?:
                   <button
                     key={finish}
                     onClick={() => setSelectedFinish(finish)}
-                    className={`py-3 px-4 text-xs tracking-wider text-left border transition cursor-pointer ${
-                      selectedFinish === finish
-                        ? "border-[#c9a84c] bg-[#c9a84c]/10 text-white"
-                        : "border-neutral-800 bg-neutral-900/50 text-gray-400 hover:border-neutral-700"
-                    }`}
+                    className={`py-3 px-4 text-xs tracking-wider text-left border transition cursor-pointer ${selectedFinish === finish
+                      ? "border-[#c9a84c] bg-[#c9a84c]/10 text-white"
+                      : "border-neutral-800 bg-neutral-900/50 text-gray-400 hover:border-neutral-700"
+                      }`}
                   >
                     {finish}
                   </button>
