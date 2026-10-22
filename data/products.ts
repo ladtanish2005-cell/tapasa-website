@@ -15,12 +15,12 @@ export const products: Product[] = [
     material: "Figured Walnut · Brass Hardware",
     price: "Rs 28,000",
     type: "seating",
-    image: "/images/VEDA 1  IMAGES/1ST IMAGE.jpg",
+    image: "/images/veda-1-1.jpg",
     images: [
-      "/images/VEDA 1  IMAGES/1ST IMAGE.jpg",
-      "/images/VEDA 1  IMAGES/IMAGE 2.jpg",
-      "/images/VEDA 1  IMAGES/IMAGE 3.jpg",
-      "/images/VEDA 1  IMAGES/IMAGE 4.jpg"
+      "/images/veda-1-1.jpg",
+      "/images/veda-1-2.jpg",
+      "/images/veda-1-3.jpg",
+      "/images/veda-1-4.jpg"
     ],
   },
   {
