@@ -17,10 +17,7 @@ interface Product {
 }
 
 const VEDA_IMAGES = [
-  "/images/veda-1-1.jpg",
-  "/images/veda-1-2.jpg",
-  "/images/veda-1-3.jpg",
-  "/images/veda-1-4.jpg",
+  "/images/veda-1-1.jpg"
 ];
 
 export default function ProductDetailView({ product = products[0] }: { product?: Product }) {
@@ -29,16 +26,11 @@ export default function ProductDetailView({ product = products[0] }: { product?:
   const [inquirySent, setInquirySent] = useState(false);
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const galleryImages =
-    product?.images && product.images.length > 0
-      ? product.images
-      : VEDA_IMAGES;
-  const activeImage = galleryImages[currentImageIndex] || product?.image || "/p1.png";
+  const galleryImages = [product?.image || "/images/veda-1-1.jpg"];
+  const activeImage = galleryImages[currentImageIndex];
   const imageSrc = activeImage.startsWith("/")
     ? activeImage
     : `/${activeImage}`;
-
   const handlePrevImage = () => {
     setCurrentImageIndex((prev) =>
       prev === 0 ? galleryImages.length - 1 : prev - 1
