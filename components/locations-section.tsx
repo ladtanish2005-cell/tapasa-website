@@ -28,15 +28,8 @@ export default function LocationsSection() {
       city: "Mumbai Flagship",
       address: "Jogeshwari West, Near Station, S.V. Road, Mumbai 400102",
       hours: "MON – SAT 10:00 – 20:00",
-      phone: "+91 98200 00000",
+      phone: "+91 8976301959 / +91 9920748812",
       mapUrl: "https://maps.google.com/?q=Jogeshwari+West+Mumbai",
-    },
-    {
-      city: "Bengaluru Design Studio",
-      address: "Indiranagar 100ft Road, Stage 2, Bengaluru 560038",
-      hours: "TUE – SUN 11:00 – 19:30",
-      phone: "+91 98200 00001",
-      mapUrl: "https://maps.google.com/?q=Indiranagar+100ft+Road+Bengaluru",
     },
   ];
 
@@ -92,13 +85,8 @@ export default function LocationsSection() {
           {/* Left: Locations Info */}
           <div className="space-y-8 p-8 md:p-10 flex flex-col justify-between">
             <div className="space-y-8">
-              {showrooms.map((showroom, idx) => (
-                <div
-                  key={showroom.city}
-                  className={`pb-8 ${
-                    idx < showrooms.length - 1 ? "border-b border-[#D4C4A8]" : ""
-                  }`}
-                >
+              {showrooms.map((showroom) => (
+                <div key={showroom.city}>
                   <div className="flex items-start gap-4 mb-3">
                     <MapPin className="text-[#A0826D] shrink-0 mt-1" size={24} />
                     <div>
