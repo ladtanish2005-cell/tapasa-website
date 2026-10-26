@@ -191,25 +191,67 @@ export default function ProductDetailView({ product = products[0] }: { product?:
               </p>
             </div>
 
-            <div className="border-y border-neutral-800 py-4 flex items-baseline justify-between">
-              <div>
-                <span className="text-xs text-gray-500 tracking-wider block mb-1">
-                  PRICE (INCL. TAXES)
-                </span>
-                <span className="text-3xl font-light text-[#c9a84c]">
-                  {product.price}
-                </span>
+            {/* Dynamic Content: Swaps between Price/Description and Technical Specifications */}
+            {currentImageIndex === 1 ? (
+              <div className="space-y-6 text-stone-200 py-2">
+                <div>
+                  <span className="text-xs tracking-widest text-[#c9a84c] uppercase font-medium">
+                    TECHNICAL SPECIFICATIONS
+                  </span>
+                  <h2 className="text-xl font-light text-amber-100 mt-1">Overall Dimensions</h2>
+                  <div className="grid grid-cols-3 gap-4 mt-3 p-4 bg-stone-900/60 rounded-lg border border-stone-800 text-center">
+                    <div>
+                      <p className="text-xs text-stone-400 uppercase">Width</p>
+                      <p className="text-2xl font-semibold text-[#c9a84c]">1800</p>
+                      <p className="text-xs text-stone-500">mm</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-stone-400 uppercase">Depth</p>
+                      <p className="text-2xl font-semibold text-[#c9a84c]">700</p>
+                      <p className="text-xs text-stone-500">mm</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-stone-400 uppercase">Height</p>
+                      <p className="text-2xl font-semibold text-[#c9a84c]">750</p>
+                      <p className="text-xs text-stone-500">mm</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-sm font-medium text-stone-300 mb-2">Component Dimensions</h3>
+                  <div className="space-y-2 text-xs divide-y divide-stone-800/60 bg-stone-900/40 p-3 rounded-lg border border-stone-800/80">
+                    <div className="flex justify-between pt-1"><span className="text-stone-400">Seating section width</span><span className="text-amber-200">1000 mm</span></div>
+                    <div className="flex justify-between pt-1"><span className="text-stone-400">Bookshelf section width</span><span className="text-amber-200">800 mm</span></div>
+                    <div className="flex justify-between pt-1"><span className="text-stone-400">Seat height from floor</span><span className="text-amber-200">420 mm</span></div>
+                    <div className="flex justify-between pt-1"><span className="text-stone-400">Seat depth</span><span className="text-amber-200">500–550 mm</span></div>
+                    <div className="flex justify-between pt-1"><span className="text-stone-400">Backrest height above seat</span><span className="text-amber-200">300–330 mm</span></div>
+                    <div className="flex justify-between pt-1"><span className="text-stone-400">Wooden frame thickness</span><span className="text-amber-200">35–50 mm</span></div>
+                    <div className="flex justify-between pt-1"><span className="text-stone-400">Leg height</span><span className="text-amber-200">150 mm</span></div>
+                    <div className="flex justify-between pt-1"><span className="text-stone-400">Shelf depth</span><span className="text-amber-200">250–300 mm</span></div>
+                    <div className="flex justify-between pt-1"><span className="text-stone-400">Lower shelf opening height</span><span className="text-amber-200">180–220 mm</span></div>
+                    <div className="flex justify-between pt-1"><span className="text-stone-400">Upper shelf opening height</span><span className="text-amber-200">100–150 mm</span></div>
+                  </div>
+                </div>
               </div>
-              <span className="text-xs text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-3 py-1 rounded">
-                Available to Order
-              </span>
-            </div>
+            ) : (
+              <div className="space-y-4">
+                <div className="border-y border-neutral-800 py-4 flex items-baseline justify-between">
+                  <div>
+                    <span className="text-xs text-gray-500 tracking-wider block mb-1">PRICE (INCL. TAXES)</span>
+                    <span className="text-3xl font-light text-[#c9a84c]">{product.price}</span>
+                  </div>
+                  <span className="text-xs text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-3 py-1 rounded-full">
+                    Available to Order
+                  </span>
+                </div>
 
-            {/* Description */}
-            <p className="text-sm md:text-base text-gray-300 font-light leading-relaxed">
-              Every detail of the {product.name} is meticulously considered. Crafted with sustainably sourced hardwoods and solid joinery techniques, this piece pairs artisanal balance with daily durability.
-            </p>
-
+                {/* Description */}
+                <p className="text-sm md:text-base text-gray-300 font-light leading-relaxed">
+                  Every detail of the {product.name} is meticulously considered. Crafted with sustainably sourced hardwoods and solid joinery techniques, this piece pairs artisanal balance with daily durability.
+                </p>
+              </div>
+            )}
             {/* Finish Selection */}
             <div>
               <label className="text-xs text-gray-400 tracking-widest uppercase block mb-3 font-medium">
