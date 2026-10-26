@@ -30,6 +30,10 @@ export const products: Product[] = [
     price: "Rs 28,000",
     type: "seating",
     image: "/p2.png",
+    images: [
+      "/p2.png",
+      "/images/veda-2-2.jpg"
+    ]
   },
   {
     id: 3,
