@@ -26,7 +26,9 @@ export default function ProductDetailView({ product = products[0] }: { product?:
   const [inquirySent, setInquirySent] = useState(false);
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const galleryImages = [product?.image || "/images/veda-1-1.jpg"];
+  const galleryImages = product?.images && product.images.length > 0
+    ? product.images
+    : [product?.image || "/images/veda-1-1.jpg"];
   const activeImage = galleryImages[currentImageIndex];
   const imageSrc = activeImage.startsWith("/")
     ? activeImage
