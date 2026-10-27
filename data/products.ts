@@ -6,8 +6,20 @@ export interface Product {
   type: string;
   image: string;
   images?: string[];
+  specifications?: {
+    overall: {
+      width: string;
+      depth: string;
+      height: string;
+      unit: string;
+      note?: string;
+    };
+    components: {
+      label: string;
+      value: string;
+    }[];
+  };
 }
-
 export const products: Product[] = [
   {
     id: 1,
@@ -44,7 +56,7 @@ export const products: Product[] = [
     image: "/p3.png",
     images: [
       "/p3.png",
-      "/images/tps signature armchair-1-2.jpg"
+      "/images/tps-armchair-2.jpg"
     ],
     specifications: {
       overall: {
