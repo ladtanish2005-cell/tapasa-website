@@ -55,7 +55,6 @@ export const products: Product[] = [
     type: "seating",
     image: "/images/tps-signature-armchair.jpeg",
     images: [
-      "/images/tps-signature-armchair.jpeg",
       "/images/tps-signature-armchair.jpeg"
     ],
     specifications: {
