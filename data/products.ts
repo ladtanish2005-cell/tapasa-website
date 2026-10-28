@@ -53,10 +53,10 @@ export const products: Product[] = [
     material: "Oak Wood · Grey Linen",
     price: "Rs 25,000",
     type: "seating",
-    image: "/images/tps-armchair-2.jpg",
+    image: "/images/tps-signature-armchair.jpg",
     images: [
-      "/images/tps-armchair-2.jpg",
-      "/images/tps-armchair-2.jpg"
+      "/images/tps-signature-armchair.jpg",
+      "/images/tps-signature-armchair.jpg"
     ],
     specifications: {
       overall: {
