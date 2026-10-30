@@ -103,7 +103,7 @@ export const products: Product[] = [
             image: "/p5.png",
   },
 {
-  id: 6,
+  id: 4,
     name: "Setu Study Desk",
       material: "Walnut Wood · Brass Hardware",
         price: "Rs 18,000",
@@ -111,31 +111,25 @@ export const products: Product[] = [
             image: "/images/setu-desk.jpg",
               images: [
                 "/images/setu-desk.jpg"
-              ],
-                overall: {
-    width: "1400",
-      depth: "600",
-        height: "750",
-          unit: "mm",
-            note: "Overall size: 1400 W × 600 D × 750 H mm."
-  },
-  components: [
-    { label: "Overall desk width", value: "1400 mm" },
-    { label: "Overall desk depth", value: "600 mm" },
-    { label: "Overall height", value: "750 mm" },
-    { label: "Tabletop thickness", value: "25–30 mm" },
-    { label: "Left curved support thickness", value: "30–35 mm" },
-    { label: "Main tabletop usable width", value: "1400 mm" },
-    { label: "Right drawer cabinet width", value: "380 mm" },
-    { label: "Drawer cabinet depth", value: "500 mm" },
-    { label: "Drawer cabinet height", value: "500 mm" },
-    { label: "Number of drawers", value: "3" },
-    { label: "Individual drawer front height", value: "145–155 mm" },
-    { label: "Drawer depth", value: "400–450 mm" },
-    { label: "Under-table drawer width", value: "350 mm" },
-    { label: "Under-table drawer height", value: "70-90 mm" },
-    { label: "Leg clearance from floor", value: "720 mm approximately" }
-  ]
+              ]
+},
+components: [
+  { label: "Overall desk width", value: "1400 mm" },
+  { label: "Overall desk depth", value: "600 mm" },
+  { label: "Overall height", value: "750 mm" },
+  { label: "Tabletop thickness", value: "25–30 mm" },
+  { label: "Left curved support thickness", value: "30–35 mm" },
+  { label: "Main tabletop usable width", value: "1400 mm" },
+  { label: "Right drawer cabinet width", value: "380 mm" },
+  { label: "Drawer cabinet depth", value: "500 mm" },
+  { label: "Drawer cabinet height", value: "500 mm" },
+  { label: "Number of drawers", value: "3" },
+  { label: "Individual drawer front height", value: "145–155 mm" },
+  { label: "Drawer depth", value: "400–450 mm" },
+  { label: "Under-table drawer width", value: "350 mm" },
+  { label: "Under-table drawer height", value: "70-90 mm" },
+  { label: "Leg clearance from floor", value: "720 mm approximately" }
+]
 },
 {
   id: 7,
