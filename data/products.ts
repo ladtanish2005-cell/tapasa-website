@@ -84,60 +84,77 @@ export const products: Product[] = [
       { label: "Leg height", value: "180–200 mm" },
       { label: "Leg thickness", value: "35–45 mm" }
     ]
-  }
-  },
-{
-  id: 4,
+  {
+    id: 4,
     name: "Setu Study Desk (Oak)",
-      material: "Oak Wood · Powder Coated Steel",
-        price: "Rs 18,000",
-          type: "tables",
-            image: "/p4.png",
+    material: "Oak Wood · Powder Coated Steel",
+    price: "Rs 18,000",
+    type: "tables",
+    image: "/images/setu-desk.jpg",
+    specs: [
+      { label: "Tabletop thickness", value: "25-30 mm" },
+      { label: "Left curved support thickness", value: "30-35 mm" },
+      { label: "Main tabletop usable width", value: "1400 mm" },
+      { label: "Right drawer cabinet width", value: "380 mm" },
+      { label: "Drawer cabinet depth", value: "500 mm" },
+      { label: "Drawer cabinet height", value: "500 mm" },
+      { label: "Number of drawers", value: "3" },
+      { label: "Individual drawer front height", value: "145-155 mm" },
+      { label: "Drawer depth", value: "400-450 mm" },
+      { label: "Under-table drawer width", value: "350 mm" },
+      { label: "Under-table drawer height", value: "70-90 mm" },
+      { label: "Leg clearance from floor", value: "720 mm approximately" }
+    ]
   },
-{
-  id: 5,
+  {
+    id: 5,
     name: "Jharna Study Table Set",
-      material: "Walnut Wood",
-        price: "Rs 20,000",
-          type: "tables",
-            image: "/p5.png",
+    material: "Walnut Wood",
+    price: "Rs 20,000",
+    type: "tables",
+    image: "/p5.png",
+    images: [
+      "/p5.png",
+      "/images/jharna study desk jpg.jpg"
+    ],
+    specs: [
+      { label: "Overall desk footprint", value: "2000 W × 650 D × 750 H mm" },
+      { label: "Main working desk width", value: "1400 mm" },
+      { label: "Left storage cabinet width", value: "600 mm" },
+      { label: "Main desk depth", value: "650 mm" },
+      { label: "Storage cabinet depth", value: "550 mm" },
+      { label: "Main desk height", value: "750 mm" },
+      { label: "Tabletop thickness", value: "30 mm" },
+      { label: "Storage cabinet height", value: "620 mm" },
+      { label: "Number of cabinet drawers", value: "3" },
+      { label: "Individual drawer front height", value: "170–180 mm" },
+      { label: "Under-table drawer width", value: "450 mm" },
+      { label: "Under-table drawer height", value: "80 mm" },
+      { label: "Curved side support thickness", value: "30–40 mm" },
+      { label: "Knee clearance height", value: "650–680 mm" },
+      { label: "Bookshelf dimensions", value: "1200 W × 350 H × 250 D mm" },
+      { label: "Tabletop material", value: "Oak veneer plywood" },
+      { label: "Curved side panel material", value: "Bent plywood" },
+      { label: "Storage cabinet material", value: "Plywood with oak veneer" },
+      { label: "Drawer fronts", value: "MDF with matte laminate" },
+      { label: "Drawer channels", value: "Soft-close metal runners" },
+      { label: "Surface finish", value: "Matte PU wood polish" }
+    ]
   },
-{
-  id: 4,
-    name: "Setu Study Desk",
-      material: "Walnut Wood · Brass Hardware",
-        price: "Rs 18,000",
-          type: "tables",
-            image: "/images/setu-desk.jpg",
-              images: [
-                "/images/setu-desk.jpg"
-              ]
-},
-components: [
-  { label: "Overall desk width", value: "1400 mm" },
-  { label: "Overall desk depth", value: "600 mm" },
-  { label: "Overall height", value: "750 mm" },
-  { label: "Tabletop thickness", value: "25–30 mm" },
-  { label: "Left curved support thickness", value: "30–35 mm" },
-  { label: "Main tabletop usable width", value: "1400 mm" },
-  { label: "Right drawer cabinet width", value: "380 mm" },
-  { label: "Drawer cabinet depth", value: "500 mm" },
-  { label: "Drawer cabinet height", value: "500 mm" },
-  { label: "Number of drawers", value: "3" },
-  { label: "Individual drawer front height", value: "145–155 mm" },
-  { label: "Drawer depth", value: "400–450 mm" },
-  { label: "Under-table drawer width", value: "350 mm" },
-  { label: "Under-table drawer height", value: "70-90 mm" },
-  { label: "Leg clearance from floor", value: "720 mm approximately" }
-]
-},
-{
+  {
+    id: 6,
+    name: "Setu Study Desk (Walnut)",
+    material: "Walnut Wood",
+    price: "Rs 18,000",
+    type: "tables",
+    image: "/images/setu-desk.jpg",
+  },
   id: 7,
-    name: "Krishana Side Table",
-      material: "Walnut Wood · Brass Hardware",
-        price: "Rs 15,000",
-          type: "storage",
-            image: "/p7.png",
+  name: "Krishana Side Table",
+  material: "Walnut Wood · Brass Hardware",
+  price: "Rs 15,000",
+  type: "storage",
+  image: "/p7.png",
   },
 {
   id: 8,
