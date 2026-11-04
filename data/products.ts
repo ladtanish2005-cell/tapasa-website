@@ -115,10 +115,10 @@ export const products: Product[] = [
     image: "/p5.png",
     images: [
       "/p5.png",
-      "/images/jharna study desk jpg.jpg"
+      "/images/jharna study desk.jpg"
     ],
     specs: [
-      { label: "Overall desk footprint", value: "2000 W × 650 D × 750 H mm" },
+      { label: "Overall desk footprint", value: "2000 W x 650 D x 750 H mm" },
       { label: "Main working desk width", value: "1400 mm" },
       { label: "Left storage cabinet width", value: "600 mm" },
       { label: "Main desk depth", value: "650 mm" },
@@ -131,8 +131,8 @@ export const products: Product[] = [
       { label: "Under-table drawer width", value: "450 mm" },
       { label: "Under-table drawer height", value: "80 mm" },
       { label: "Curved side support thickness", value: "30–40 mm" },
-      { label: "Knee clearance height", value: "650–680 mm" },
-      { label: "Bookshelf dimensions", value: "1200 W × 350 H × 250 D mm" },
+      { label: "Knee clearance height", value: "650-680 mm" },
+      { label: "Bookshelf dimensions", value: "1200 W x 350 H x 250 D mm" },
       { label: "Tabletop material", value: "Oak veneer plywood" },
       { label: "Curved side panel material", value: "Bent plywood" },
       { label: "Storage cabinet material", value: "Plywood with oak veneer" },
