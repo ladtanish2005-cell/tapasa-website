@@ -71,11 +71,10 @@ export default function Hero2Section() {
             <button
               key={key}
               onClick={() => setActiveRoom(key as "living" | "bedroom")}
-              className={`pb-4 text-xs tracking-widest uppercase transition-all relative ${
-                activeRoom === key
-                  ? "text-white font-medium"
-                  : "text-gray-500 hover:text-gray-300"
-              }`}
+              className={`pb-4 text-xs tracking-widest uppercase transition-all relative ${activeRoom === key
+                ? "text-white font-medium"
+                : "text-gray-500 hover:text-gray-300"
+                }`}
             >
               {key === "living" ? "The Living Room" : "The Bedroom Sanctuary"}
               {activeRoom === key && (
@@ -110,32 +109,51 @@ export default function Hero2Section() {
             ))}
           </div>
         </div>
-
         {/* Showcase Image Display */}
-        <div className="relative w-full h-[400px] md:h-[520px] lg:h-[600px] overflow-hidden rounded-sm border border-neutral-800 shadow-2xl bg-neutral-900">
+        <div className="relative w-full h-[400px] md:h-[520px] lg:h-[600px] overflow-hidden rounded-xl group">
           <Image
             key={currentRoom.image}
             src={currentRoom.image}
             alt={currentRoom.name}
             fill
-            className="object-cover transition-opacity duration-700 animate-in fade-in"
+            className="object-cover transition-all duration-500 group-hover:blur-md group-hover:scale-[1.01]"
             sizes="(max-width: 1280px) 100vw, 1280px"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-          <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between pointer-events-auto">
-            <span className="text-xs text-white/90 bg-black/60 backdrop-blur-md px-4 py-2 border border-white/10 uppercase tracking-widest">
+
+          {/* Interactive Hotspot */}
+          <div className="absolute top-[60%] left-[59%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20">
+            <div className="relative flex items-center justify-center">
+              <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-amber-400 opacity-40"></span>
+              <div className="w-10 h-10 rounded-full border-2 border-amber-400 bg-amber-500/20 backdrop-blur-xs flex items-center justify-center transition-transform duration-300 hover:scale-125">
+                <div className="w-3 h-3 bg-amber-400 rounded-full shadow-[0_0_12px_#f59e0b]"></div>
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between pointer-events-none">
+            <span className="text-xs text-white/90 bg-black/60 backdrop-blur-md px-4 py-2 border border-white/10 rounded-full">
               TAPASA Bespoke Architecture
             </span>
             <Link
               href="/products"
-              className="text-xs text-black bg-[#C9A84C] hover:bg-amber-400 font-medium px-5 py-2 uppercase tracking-widest transition shadow-lg"
+              className="text-xs text-black bg-[#C9A84C] hover:bg-amber-400 font-medium px-5 py-2.5 rounded-full pointer-events-auto transition-colors"
             >
               Shop Curated Collection
             </Link>
           </div>
         </div>
-      </div>
-    </section>
+        TAPASA Bespoke Architecture
+      </span>
+      <Link
+        href="/products"
+        className="text-xs text-black bg-[#C9A84C] hover:bg-amber-400 font-medium px-5 py-2 uppercase tracking-widest transition shadow-lg"
+      >
+        Shop Curated Collection
+      </Link>
+    </div >
+          </div >
+        </div >
+    </section >
   );
 }
