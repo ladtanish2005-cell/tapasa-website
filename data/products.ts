@@ -32,8 +32,6 @@ export const products: Product[] = [
     images: [
       "/images/veda-1-1.jpg",
       "/images/veda-1-2.jpg",
-      "/images/veda-1-3.jpg",
-      "/images/veda-1-4.jpg"
     ],
     specifications: {
       overall: {
