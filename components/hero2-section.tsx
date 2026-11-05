@@ -110,7 +110,7 @@ export default function Hero2Section() {
           </div>
         </div>
         {/* Showcase Image Display */}
-        <div className="relative w-full h-[400px] md:h-[520px] lg:h-[600px] overflow-hidden rounded-xl group">
+        <div className="group relative w-full h-[400px] md:h-[520px] lg:h-[600px] overflow-hidden rounded-xl">
           <Image
             key={currentRoom.image}
             src={currentRoom.image}
@@ -122,7 +122,7 @@ export default function Hero2Section() {
           />
 
           {/* Interactive Hotspot */}
-          <div className="absolute top-[60%] left-[59%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20">
+          <div className="absolute top-[60%] left-[59%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20 pointer-events-auto">
             <div className="relative flex items-center justify-center">
               <span className="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-amber-400 opacity-40"></span>
               <div className="w-10 h-10 rounded-full border-2 border-amber-400 bg-amber-500/20 backdrop-blur-xs flex items-center justify-center transition-transform duration-300 hover:scale-125">
@@ -131,7 +131,7 @@ export default function Hero2Section() {
             </div>
           </div>
 
-          <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between pointer-events-none">
+          <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between pointer-events-none z-10">
             <span className="text-xs text-white/90 bg-black/60 backdrop-blur-md px-4 py-2 border border-white/10 rounded-full">
               TAPASA Bespoke Architecture
             </span>
@@ -143,17 +143,3 @@ export default function Hero2Section() {
             </Link>
           </div>
         </div>
-        TAPASA Bespoke Architecture
-      </span>
-      <Link
-        href="/products"
-        className="text-xs text-black bg-[#C9A84C] hover:bg-amber-400 font-medium px-5 py-2 uppercase tracking-widest transition shadow-lg"
-      >
-        Shop Curated Collection
-      </Link>
-    </div >
-          </div >
-        </div >
-    </section >
-  );
-}
